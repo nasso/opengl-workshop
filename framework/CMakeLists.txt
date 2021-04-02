@@ -1,6 +1,3 @@
-cmake_minimum_required(VERSION 3.11)
-
-project(opengl_workshop_framework)
 include(FetchContent)
 
 # GLAD - OpenGL Loader
@@ -29,8 +26,6 @@ set(workshop_SOURCES
     "src/utils.c"
 )
 
-add_library(workshop ${workshop_SOURCES})
-target_include_directories(workshop PUBLIC include)
-
-target_link_libraries(workshop glfw)
-target_link_libraries(workshop glad)
+add_library(workshop_framework ${workshop_SOURCES})
+target_include_directories(workshop_framework PUBLIC include)
+target_link_libraries(workshop_framework glfw glad)

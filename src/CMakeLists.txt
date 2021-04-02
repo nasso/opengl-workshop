@@ -4,7 +4,7 @@ set(main_SOURCES
 )
 
 # Libraries
-set(main_LIBRARIES workshop)
+set(main_LIBRARIES workshop_framework)
 
 # Look for the math library (Windows doesn't need it!)
 CHECK_LIBRARY_EXISTS(m sinf "" HAVE_LIB_M)
