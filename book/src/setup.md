@@ -2,10 +2,10 @@
 
 > You can follow this workshop on Windows!
 
-I have prepared a repository containing several utilities that aren't relevant
-to this workshop (e.g. to open a window, create an OpenGL context or load a
-bitmap file). This way, you'll be focused on the important parts of today's
-workshop: OpenGL!
+I have prepared [a repository](https://github.com/nasso/opengl-workshop)
+containing several utilities that aren't relevant to this workshop (e.g. to open
+a window, create an OpenGL context or load a bitmap file). This way, you'll be
+focused on the important parts of today's workshop: OpenGL!
 
 Clone it somewhere on your computer to get started:
 

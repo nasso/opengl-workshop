@@ -21,7 +21,10 @@ sequence!
 Instead, many computers have a Graphical Processing Unit (GPU for short). It is
 much more efficient because it's able to render different parts of your scene in
 parallel! To be able to communicate with it in your programs, many different
-APIs exist, each with a different set of capabilities and platform support:
+APIs exist, each with a different set of capabilities and platform support.
+
+The following table summarises the specificity of the most common APIs out
+there:
 
 | Platform | OpenGL | Direct3D | Vulkan | Metal |
 | -------: | :----: | :------: | :----: | :---: |
@@ -33,8 +36,8 @@ APIs exist, each with a different set of capabilities and platform support:
 
 \*: non-official support through third-party software
 
-These aren't the only low-level graphics APIs to exist, but they are the main
-supported ones.
+> _I have made up this table myself according to my own experience and general
+> recommendations._
 
 ## What are we making?
 
