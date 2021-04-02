@@ -99,7 +99,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -247,6 +247,25 @@ re-run the last two commands to see your changes:</p>
 <p>You shouldn't have to re-configure! CMake should automatically re-configure
 the build when deemed necessary.</p>
 </blockquote>
+<h1 id="hello-triangle"><a class="header" href="#hello-triangle">&quot;Hello, Triangle!&quot;</a></h1>
+<p>Traditionally, when learning a new language or technology, us programmers enjoy
+writing a simple program displaying, in some way, &quot;Hello, World!&quot;.</p>
+<p>Now, in the world of low-level graphics programming, displaying text is already
+quite a complex task. In fact, it's probably one of the hardest things to do
+properly on today's GPUs.</p>
+<p>Instead, graphics programming has its own tradition: the RGB triangle! Here's
+what you should have at the end of this chapter:</p>
+<p><img src="hello-triangle/./res/win_triangle.png" alt="The RGB Triangle" /> <em>Hello, <del>World</del> Triangle!</em></p>
+<h1 id="clearing-the-screen"><a class="header" href="#clearing-the-screen">Clearing the screen</a></h1>
+<p>Right now, your window probably doesn't show anything exciting yet. Let's change
+that!</p>
+<p>Use <code>glClearColor</code> and <code>glClear</code> to clear the framebuffer of your window using
+the colour of your choice!</p>
+<p><img src="hello-triangle/./res/win_clear.png" alt="A cleared window" /> <em>I went with some dark shade of grey</em></p>
+<h2 id="links"><a class="header" href="#links">Links</a></h2>
+<ul>
+<li><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/">OpenGL 4 Reference Pages</a></li>
+</ul>
 
                     </main>
 
