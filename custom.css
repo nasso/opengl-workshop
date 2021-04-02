@@ -1,0 +1,20 @@
+.light .dark-only,
+.rust .dark-only {
+  display: none;
+}
+
+.coal .light-only,
+.navy .light-only,
+.ayu .light-only {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .light.no-js .light-only {
+    display: none;
+  }
+
+  .light.no-js .dark-only {
+    display: initial;
+  }
+}
