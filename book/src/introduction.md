@@ -1,10 +1,8 @@
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
 
-<p align="center">
-    <img class="light-only" src="OpenGL_170px_June16.png">
-    <img class="dark-only" src="OpenGL_White_170px_June16.png">
-</p>
+<img class="light-only" src="res/OpenGL_170px_June16.png">
+<img class="dark-only" src="res/OpenGL_White_170px_June16.png">
 
 # Introduction
 

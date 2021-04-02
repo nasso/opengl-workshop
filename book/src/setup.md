@@ -1,7 +1,9 @@
 # Setup
 
+> You can follow this workshop on Windows!
+
 I have prepared a repository containing several utilities that aren't relevant
-to this workshop (e.g. to open a window, create an opengl context or load a
+to this workshop (e.g. to open a window, create an OpenGL context or load a
 bitmap file). This way, you'll be focused on the important parts of today's
 workshop: OpenGL!
 
@@ -22,6 +24,10 @@ cmake --build .     # build the executable
 ./main              # run it!
 ```
 
+At this point, you should see an empty window appear!
+
+![Empty Window](./res/win_empty.png) _An empty window!_
+
 When modifying your code (in `src/main.c` for instance), you'll only have to
 re-run the last two commands to see your changes:
 
@@ -31,4 +37,4 @@ cmake --build . # re-build (only necessary files)
 ```
 
 > You shouldn't have to re-configure! CMake should automatically re-configure
-> the build when necessary.
+> the build when deemed necessary.
