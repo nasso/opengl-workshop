@@ -169,10 +169,8 @@
                     <main>
                         <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
-<p align="center">
-    <img class="light-only" src="OpenGL_170px_June16.png">
-    <img class="dark-only" src="OpenGL_White_170px_June16.png">
-</p>
+<img class="light-only" src="res/OpenGL_170px_June16.png">
+<img class="dark-only" src="res/OpenGL_White_170px_June16.png">
 <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>Welcome to my OpenGL workshop! This workshop will walk you through the
 realisation of a minimal C program capable of displaying a (transparent) sprite
@@ -215,8 +213,11 @@ our goal:</p>
 </ol>
 <p>Don't worry, we'll go through each of those steps one by one!</p>
 <h1 id="setup"><a class="header" href="#setup">Setup</a></h1>
+<blockquote>
+<p>You can follow this workshop on Windows!</p>
+</blockquote>
 <p>I have prepared a repository containing several utilities that aren't relevant
-to this workshop (e.g. to open a window, create an opengl context or load a
+to this workshop (e.g. to open a window, create an OpenGL context or load a
 bitmap file). This way, you'll be focused on the important parts of today's
 workshop: OpenGL!</p>
 <p>Clone it somewhere on your computer to get started:</p>
@@ -231,6 +232,8 @@ cmake . -B build    # configure a CMake build in the `build/` directory
 cmake --build .     # build the executable
 ./main              # run it!
 </code></pre>
+<p>At this point, you should see an empty window appear!</p>
+<p><img src="./res/win_empty.png" alt="Empty Window" /> <em>An empty window!</em></p>
 <p>When modifying your code (in <code>src/main.c</code> for instance), you'll only have to
 re-run the last two commands to see your changes:</p>
 <pre><code class="language-sh">cmake --build . # re-build (only necessary files)
@@ -238,7 +241,7 @@ re-run the last two commands to see your changes:</p>
 </code></pre>
 <blockquote>
 <p>You shouldn't have to re-configure! CMake should automatically re-configure
-the build when necessary.</p>
+the build when deemed necessary.</p>
 </blockquote>
 
                     </main>

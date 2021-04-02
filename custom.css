@@ -1,3 +1,15 @@
+img {
+  display: block;
+  margin: auto;
+}
+
+img + em {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
 .light .dark-only,
 .rust .dark-only {
   display: none;
