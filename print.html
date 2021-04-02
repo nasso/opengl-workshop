@@ -184,7 +184,9 @@ sequence!</p>
 <p>Instead, many computers have a Graphical Processing Unit (GPU for short). It is
 much more efficient because it's able to render different parts of your scene in
 parallel! To be able to communicate with it in your programs, many different
-APIs exist, each with a different set of capabilities and platform support:</p>
+APIs exist, each with a different set of capabilities and platform support.</p>
+<p>The following table summarises the specificity of the most common APIs out
+there:</p>
 <table><thead><tr><th align="right">Platform</th><th align="center">OpenGL</th><th align="center">Direct3D</th><th align="center">Vulkan</th><th align="center">Metal</th></tr></thead><tbody>
 <tr><td align="right">Windows</td><td align="center">++</td><td align="center">+++</td><td align="center">++</td><td align="center">-</td></tr>
 <tr><td align="right">Linux</td><td align="center">++</td><td align="center">-</td><td align="center">+++</td><td align="center">-</td></tr>
@@ -193,8 +195,10 @@ APIs exist, each with a different set of capabilities and platform support:</p>
 <tr><td align="right">iOS</td><td align="center">+</td><td align="center">-</td><td align="center">+*</td><td align="center">+++</td></tr>
 </tbody></table>
 <p>*: non-official support through third-party software</p>
-<p>These aren't the only low-level graphics APIs to exist, but they are the main
-supported ones.</p>
+<blockquote>
+<p><em>I have made up this table myself according to my own experience and general
+recommendations.</em></p>
+</blockquote>
 <h2 id="what-are-we-making"><a class="header" href="#what-are-we-making">What are we making?</a></h2>
 <p>To give you a rough understanding of how the OpenGL API is structured, we're
 going to render a basic 2D sprite on the screen. It may sound easy at first if
@@ -216,10 +220,10 @@ our goal:</p>
 <blockquote>
 <p>You can follow this workshop on Windows!</p>
 </blockquote>
-<p>I have prepared a repository containing several utilities that aren't relevant
-to this workshop (e.g. to open a window, create an OpenGL context or load a
-bitmap file). This way, you'll be focused on the important parts of today's
-workshop: OpenGL!</p>
+<p>I have prepared <a href="https://github.com/nasso/opengl-workshop">a repository</a>
+containing several utilities that aren't relevant to this workshop (e.g. to open
+a window, create an OpenGL context or load a bitmap file). This way, you'll be
+focused on the important parts of today's workshop: OpenGL!</p>
 <p>Clone it somewhere on your computer to get started:</p>
 <pre><code class="language-sh">git clone https://github.com/nasso/opengl-workshop.git
 </code></pre>
