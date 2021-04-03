@@ -20,8 +20,6 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="favicon.svg">
-        
         
         <link rel="shortcut icon" href="favicon.png">
         
@@ -54,7 +52,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -287,15 +285,16 @@ features that make it easier to write shaders: types such as <code>vec2</code>, 
 <p>Depending on their role in the graphics pipeline, shaders can take several
 names:</p>
 <h3 id="vertex-shaders"><a class="header" href="#vertex-shaders">Vertex shaders</a></h3>
-<p>Vertex shaders are executed once per vertex. The main job of a vertex shader is
-to calculate the coordinates of each vertex that make up your scene. Typically,
-this is where you would apply transformations and 3D projections.</p>
+<p>The first step when rendering anything, is to give a position to each vertex.
+This is exactly what the <em>vertex shader</em> is for! It is executed once for each
+vertex, to calculate its coordinates on screen. Typically, this is where you
+would apply transformations and 3D projections.</p>
 <pre><code class="language-glsl">#version 330 core
 
 layout(location = 0) in vec2 a_Position;
 
 void main() {
-    gl_Position = vec4(a_Position, 0.0, 1.0);
+  gl_Position = vec4(a_Position, 0.0, 1.0);
 }
 </code></pre>
 <p>Here are a couple things to note about this example shader:</p>
@@ -317,13 +316,75 @@ worry too much about it for now, just keep in mind that <code>w</code> should be
 <p>The inputs of a vertex shader can be anything you want! For example, you could
 keep it simple and just feed it plain 2D coordinates like in the example above.
 But you could also feed it 3D coordinates and matrices, and let it do the math
-to figure out the final 2D position! Don't worry, your GPU <em>loves</em> doing math:
-this is its duty.</p>
-<p><em>TODO: loading the vertex shader with opengl</em></p>
+to figure out the final 2D position! Don't worry, your GPU <em>loves</em> doing math.</p>
+<h4 id="exercise-compiling-a-vertex-shader"><a class="header" href="#exercise-compiling-a-vertex-shader">Exercise: compiling a vertex shader</a></h4>
+<p>To create a shader, you can use <code>glCreateShader</code>. Once created, you can load the
+GLSL source code with <code>glShaderSource</code> and compile it with <code>glCompileShader</code>. To
+make it easier for you to write your shaders in separate files (typically <code>*.vs</code>
+for vertex shaders and <code>*.fs</code> for fragment shaders), I've written a helper
+function to read a file in a heap-allocated string:</p>
+<pre><code class="language-c">char* source = read_file(&quot;./res/my_shader.vs&quot;);
+
+GLuint shader = glCreateShader(GL_VERTEX_SHADER);
+glShaderSource(shader, 1, &amp;source, NULL);
+glCompileShader(shader);
+
+// don't forget to free the shader source string!
+free(source);
+</code></pre>
+<p>Just don't forget to <code>#include &quot;utils.h&quot;</code> at the top of your C source file.</p>
+<p>Try creating and compiling a vertex shader (for instance, the above example)
+using those functions.</p>
+<blockquote>
+<p>You can use <code>glGetShaderiv</code> and <code>glGetShaderInfoLog</code> to see if your shader
+successfully compiled! Try inserting a syntax error and see if you can get a
+meaningful error message from it.</p>
+</blockquote>
 <h3 id="fragment-or-pixel-shaders"><a class="header" href="#fragment-or-pixel-shaders">Fragment (or pixel) shaders</a></h3>
-<p><em>TODO</em></p>
-<h3 id="compute-shaders"><a class="header" href="#compute-shaders">Compute shaders</a></h3>
-<p><em>TODO</em></p>
+<p>After the vertex shader computed the positions of each triangle (GPUs can only
+draw triangles), the next step is to actually fill them with colourful pixels!
+Now, to decide what colour each pixel takes, another kind of shader is executed:
+the <em>fragment shader</em> (also known as <em>pixel shader</em>).</p>
+<blockquote>
+<p>Yes, it is executed for each individual pixel on screen. That means cycles are
+precious at this stage! Luckily, this is what modern GPUs are optimised for.</p>
+</blockquote>
+<p>Unlike the vertex shader, you cannot <em>directly</em> feed per-pixel input to your
+fragment shader. However, you can pass variables from your vertex shader to your
+fragment shader! Different values between two vertices will be linearly
+interpolated.</p>
+<pre><code class="language-glsl">#version 330 core
+
+// coming from an output of the vertex shader!
+in vec3 v_Color;
+
+// the final colour of the pixel!
+out vec4 o_Color;
+
+void main() {
+  o_Color = vec4(v_Color, 1.0);
+}
+</code></pre>
+<h4 id="exercise-compiling-a-fragment-shader"><a class="header" href="#exercise-compiling-a-fragment-shader">Exercise: compiling a fragment shader</a></h4>
+<p>Fragment shaders are compiled the exact same way as vertex shaders (don't forget
+to specify <code>GL_FRAGMENT_SHADER</code> when creating it though).</p>
+<blockquote>
+<p>Because of how similar it is to compile vertex and fragment shaders, you could
+maybe write a helper function to do it for you...</p>
+</blockquote>
+<h2 id="a-shader-program"><a class="header" href="#a-shader-program">A shader program</a></h2>
+<p>You now have a vertex shader and a fragment shader compiled! It's now time to
+link them together, just like you would link two object files together to get a
+full program.</p>
+<p>The function to do that is conveniently called <code>glLinkProgram</code>. Use it to link a
+shader program for the two shaders you have compiled.</p>
+<blockquote>
+<p>Just like compilation, linkage can fail! You can use <code>glGetProgramiv</code> and
+<code>glGetProgramInfoLog</code> to get information about any error that occurred when
+linking your shaders.</p>
+</blockquote>
+<p>Did it successfully link? Make sure it does (you might have to modify your
+shaders)!</p>
 
                     </main>
 
