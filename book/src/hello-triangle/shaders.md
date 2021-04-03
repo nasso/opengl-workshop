@@ -10,10 +10,7 @@ You might be wondering what I'm talking about, so let's reiterate, shall we?
 Shaders are pieces of software that run on your GPU. They are used to perform
 specialised calculations based on a set of inputs in parallel. They are written
 in a language specific to the graphics API you're using. The _OpenGL Shading
-Language_, abbreviated as _GLSL_, is the one we're going to use today. Examples
-of other shading languages include _HLSL_ (_High-Level Shading Language_),
-mainly used by Microsoft's Direct3D APIs, _MSL_ (_Metal Shading Language_) for
-Metal, by Apple, and _SPIR-V_, a portable binary format popularised by Vulkan.
+Language_, abbreviated as _GLSL_, is the one we're going to use today.
 
 > Don't worry! GLSL is actually very close to C! It just comes with fancy
 > features that make it easier to write shaders: types such as `vec2`, `vec3`,
