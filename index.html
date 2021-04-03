@@ -181,19 +181,20 @@ sequence!</p>
 much more efficient because it's able to render different parts of your scene in
 parallel! To be able to communicate with it in your programs, many different
 APIs exist, each with a different set of capabilities and platform support.</p>
-<p>The following table summarises the specificity of the most common APIs out
-there:</p>
-<table><thead><tr><th align="right">Platform</th><th align="center">OpenGL</th><th align="center">Direct3D</th><th align="center">Vulkan</th><th align="center">Metal</th></tr></thead><tbody>
+<p>The following table (that I just made up myself) summarises platform support for
+the most common graphics APIs out there:</p>
+<table><thead><tr><th align="right">Platform</th><th align="center">OpenGL</th><th align="center">Direct3D (DirectX)</th><th align="center">Vulkan</th><th align="center">Metal</th></tr></thead><tbody>
 <tr><td align="right">Windows</td><td align="center">++</td><td align="center">+++</td><td align="center">++</td><td align="center">-</td></tr>
 <tr><td align="right">Linux</td><td align="center">++</td><td align="center">-</td><td align="center">+++</td><td align="center">-</td></tr>
 <tr><td align="right">Android</td><td align="center">++</td><td align="center">-</td><td align="center">+++</td><td align="center">-</td></tr>
 <tr><td align="right">Mac</td><td align="center">+</td><td align="center">-</td><td align="center">+*</td><td align="center">+++</td></tr>
 <tr><td align="right">iOS</td><td align="center">+</td><td align="center">-</td><td align="center">+*</td><td align="center">+++</td></tr>
+<tr><td align="right">Xbox</td><td align="center">-</td><td align="center">+++</td><td align="center">-</td><td align="center">-</td></tr>
 </tbody></table>
 <p>*: non-official support through third-party software</p>
 <blockquote>
-<p><em>I have made up this table myself according to my own experience and general
-recommendations.</em></p>
+<p>The name of the Xbox comes from DirectX (it's a &quot;direct-X Box&quot;). The
+PlayStation by Sony has its own proprietary API.</p>
 </blockquote>
 <h2 id="what-are-we-making"><a class="header" href="#what-are-we-making">What are we making?</a></h2>
 <p>To give you a rough understanding of how the OpenGL API is structured, we're
