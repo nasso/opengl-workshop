@@ -1,4 +1,4 @@
-# "Hello, Triangle!"
+# Hello, Triangle!
 
 Traditionally, when learning a new language or technology, us programmers enjoy
 writing a simple program displaying, in some way, "Hello, World!".
