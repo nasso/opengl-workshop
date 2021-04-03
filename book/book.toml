@@ -7,3 +7,4 @@ title = "OpenGL Workshop"
 
 [output.html]
 additional-css = ["custom.css"]
+preferred-dark-theme = "ayu"
