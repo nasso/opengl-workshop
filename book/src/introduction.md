@@ -33,12 +33,14 @@ the most common graphics APIs out there:
 |  Android |   ++   |         -          |  +++   |   -   |
 |      Mac |   +    |         -          |  +\*   |  +++  |
 |      iOS |   +    |         -          |  +\*   |  +++  |
+|   Switch |   +    |         -          |   ++   |   -   |
 |     Xbox |   -    |        +++         |   -    |   -   |
 
 \*: non-official support through third-party software
 
 > The name of the Xbox comes from DirectX (it's a "direct-X Box"). The
-> PlayStation by Sony has its own proprietary API.
+> PlayStation by Sony has its own proprietary API, and [the Nintendo Switch also
+> supports NVN][switch-nvn], an API developed by NVIDIA.
 
 ## What are we making?
 
@@ -58,3 +60,6 @@ our goal:
 8. Draw all 4 vertices in our vertex array using our shader and texture!
 
 Don't worry, we'll go through each of those steps one by one!
+
+[switch-nvn]:
+  https://www.reddit.com/r/gamedev/comments/7jcugl/anyone_know_if_the_switch_has_its_own_graphics_api/
