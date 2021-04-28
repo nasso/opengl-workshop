@@ -70,8 +70,8 @@ glBufferData(GL_ARRAY_BUFFER, /* ... */);
 
 ### Buffers: checkpoint
 
-Back to code! Create the following buffers for the vertex array in the next
-section:
+Back to code! Create the following buffers for the vertex array we will be
+creating in the next section:
 
 |  X1   |  Y1   |   X2   |  Y2   |  X3   |   Y3   |
 | :---: | :---: | :----: | :---: | :---: | :----: |
