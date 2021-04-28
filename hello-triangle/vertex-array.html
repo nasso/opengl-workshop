@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Your own shader program - OpenGL Workshop</title>
+        <title>Creating a vertex array - OpenGL Workshop</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="../hello-triangle/shaders.html" class="active"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li><li class="chapter-item expanded "><a href="../hello-triangle/vertex-array.html"><strong aria-hidden="true">3.3.</strong> Creating a vertex array</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="../hello-triangle/shaders.html"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li><li class="chapter-item expanded "><a href="../hello-triangle/vertex-array.html" class="active"><strong aria-hidden="true">3.3.</strong> Creating a vertex array</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,139 +163,83 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="your-own-shader-program"><a class="header" href="#your-own-shader-program">Your own shader program</a></h1>
-<p>Finally, the time has come! The time for what you ask? Well, to write your very
-own pair of GLSL shaders of course!</p>
-<p>You might be wondering what I'm talking about, so let's reiterate, shall we?</p>
-<h2 id="what-is-a-shader"><a class="header" href="#what-is-a-shader">What is a shader?</a></h2>
-<p>Shaders are pieces of software that run on your GPU. They are used to perform
-specialised calculations based on a set of inputs in parallel. They are written
-in a language specific to the graphics API you're using. The <em>OpenGL Shading
-Language</em>, abbreviated as <em>GLSL</em>, is the one we're going to use today.</p>
-<blockquote>
-<p>Don't worry! GLSL is actually very close to C! It just comes with fancy
-features that make it easier to write shaders: types such as <code>vec2</code>, <code>vec3</code>,
-<code>vec4</code> to represent vectors and built-in mathematical functions like
-<code>distance</code>, <code>normalize</code> and <code>cross</code>.</p>
-</blockquote>
-<p>Depending on their role in the graphics pipeline, shaders can take several
-names:</p>
-<h3 id="vertex-shaders"><a class="header" href="#vertex-shaders">Vertex shaders</a></h3>
-<p>The first step when rendering anything, is to give a position to each vertex.
-This is exactly what the <em>vertex shader</em> is for! It is executed once for each
-vertex, to calculate its coordinates on screen. Typically, this is where you
-would apply transformations and 3D projections.</p>
-<pre><code class="language-glsl">#version 330 core
-
-layout(location = 0) in vec2 a_Position;
-
-void main() {
-    gl_Position = vec4(a_Position, 0.0, 1.0);
-}
-</code></pre>
-<p>Here are a couple things to note about this example shader:</p>
+                        <h1 id="creating-a-vertex-array"><a class="header" href="#creating-a-vertex-array">Creating a vertex array</a></h1>
+<p>You should now have a pair of shaders that are compiled and linked together to
+form a shader program!</p>
+<p>The next step will be to actually feed data to our program! The graphics
+pipeline starts with the <em>Vertex Shader</em>, so we have to provide it <em>per-vertex
+data</em>. We do so by creating what is called a <em>Vertex Array</em> (makes sense,
+right?).</p>
+<p>Our triangle is made up of three vertices, so we will need three entries in our
+vertex array. In the following table, each line represents a vertex in our
+vertex array:</p>
+<table><thead><tr><th align="center">X position</th><th align="center">Y position</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td></tr>
+<tr><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td></tr>
+<tr><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td></tr>
+</tbody></table>
+<p>A vertex can have any sort of data associated with it, not just its position!
+For instance, we can associate a colour to each vertex:</p>
+<table><thead><tr><th align="center">X position</th><th align="center">Y position</th><th align="center">Red</th><th align="center">Green</th><th align="center">Blue</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td></tr>
+<tr><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td></tr>
+<tr><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td></tr>
+</tbody></table>
+<h2 id="buffers"><a class="header" href="#buffers">Buffers</a></h2>
+<p>In OpenGL, as with many other graphics API, a vertex array doesn't directly hold
+the data associated with each vertex. Instead, a one-dimensional generic data
+structure called a &quot;buffer&quot; is used to store arbitrary data that can then be
+used to construct a vertex array.</p>
+<p>Keeping the example above, we could have a buffer storing 2D vertex positions:</p>
+<table><thead><tr><th align="center">X1</th><th align="center">Y1</th><th align="center">X2</th><th align="center">Y2</th><th align="center">X3</th><th align="center">Y3</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td></tr>
+</tbody></table>
+<p>Because buffers are one-dimensional data structures, vertex coordinates have to
+be stored in an interleaved layout (<code>X1, Y1, X2, Y2, ...XN, YN</code>).</p>
+<p>OpenGL provides a couple functions to manipulate buffers:</p>
 <ul>
-<li>It has a single input: <code>a_Position</code>, a 2D vector. The <code>layout(location = 0)</code>
-part just means &quot;this is input #0&quot;.</li>
-<li>It constructs a 4D vector from <code>a_Position</code> and stores it into <code>gl_Position</code>.
-The <code>z</code> component is set to <code>0.0</code> and <code>w</code> (the fourth component) is set to
-<code>1.0</code>.</li>
+<li><code>glGenBuffers</code>: to create buffers</li>
+<li><code>glDeleteBuffers</code>: to destroy buffers</li>
+<li><code>glBufferData</code>: to set the buffer contents</li>
+<li><code>glBindBuffer</code>: to &quot;bind&quot; buffers (more on that in the next section)</li>
 </ul>
-<p>The main output of our vertex shader is the <code>gl_Position</code> variable, holding the
-coordinates of a single point of the geometry we're drawing on screen!</p>
-<blockquote>
-<p>You might wonder why <code>gl_Position</code> is a <code>vec4</code> instead of a <code>vec2</code> or a
-<code>vec3</code>. This has to do with something called <a href="https://en.wikipedia.org/wiki/Homogeneous_coordinates">homogeneous coordinates</a>. Don't
-worry too much about it for now, just keep in mind that <code>w</code> should be set to
-<code>1.0</code>!</p>
-</blockquote>
-<p>The inputs of a vertex shader can be anything you want! For example, you could
-keep it simple and just feed it plain 2D coordinates like in the example above.
-But you could also feed it 3D coordinates and matrices, and let it do the math
-to figure out the final 2D position! Don't worry, your GPU <em>loves</em> doing math.</p>
-<h4 id="exercise-compiling-a-vertex-shader"><a class="header" href="#exercise-compiling-a-vertex-shader">Exercise: compiling a vertex shader</a></h4>
-<p>To create a shader, you can use <code>glCreateShader</code>. Once created, you can load the
-GLSL source code with <code>glShaderSource</code> and compile it with <code>glCompileShader</code>. To
-make it easier for you to write your shaders in separate files (typically <code>*.vs</code>
-for vertex shaders and <code>*.fs</code> for fragment shaders), I've written a helper
-function to read a file in a heap-allocated string:</p>
-<pre><code class="language-c">char* source = read_file(&quot;./res/my_shader.vs&quot;);
-
-GLuint shader = glCreateShader(GL_VERTEX_SHADER);
-glShaderSource(shader, 1, &amp;source, NULL);
-glCompileShader(shader);
-
-// don't forget to free the shader source string!
-free(source);
+<h3 id="the-opengl-state-machine"><a class="header" href="#the-opengl-state-machine">The OpenGL state machine</a></h3>
+<p>When programming with the OpenGL API, you will encounter many <code>glBind*</code>
+functions. This is because OpenGL was designed around the concept of a &quot;state
+machine&quot; where objects must be bound before being manipulated. In other words,
+<strong>you cannot use <code>glBufferData</code> before having bound your buffer with
+<code>glBindBuffer</code></strong>:</p>
+<pre><code class="language-c">// first, bind the buffer...
+glBindBuffer(GL_ARRAY_BUFFER, my_buffer);
+// now that it is the current GL_ARRAY_BUFFER, you can set its data!
+glBufferData(GL_ARRAY_BUFFER, /* ... */);
 </code></pre>
-<p>Just don't forget to <code>#include &quot;utils.h&quot;</code> at the top of your C source file.</p>
-<p>Try creating and compiling a vertex shader (for instance, the above example)
-using those functions.</p>
 <blockquote>
-<p>You can use <code>glGetShaderiv</code> and <code>glGetShaderInfoLog</code> to see if your shader
-successfully compiled! Try inserting a syntax error and see if you can get a
-meaningful error message from it.</p>
+<p><strong>Pay attention to the arguments of <code>glBufferData</code>!</strong> Look it up... None of
+them corresponds <em>directly</em> to the buffer ID you want to manipulate.</p>
 </blockquote>
-<h3 id="fragment-or-pixel-shaders"><a class="header" href="#fragment-or-pixel-shaders">Fragment (or pixel) shaders</a></h3>
-<p>After the vertex shader computed the positions of each triangle (GPUs can only
-draw triangles), the next step is to actually fill them with colourful pixels!
-Now, to decide what colour each pixel takes, another kind of shader is executed:
-the <em>fragment shader</em> (also known as <em>pixel shader</em>).</p>
-<blockquote>
-<p>Yes, it is executed for each individual pixel on screen. That means cycles are
-precious at this stage! Luckily, this is what modern GPUs are optimised for.</p>
-</blockquote>
-<p>Unlike the vertex shader, you cannot <em>directly</em> feed per-pixel input to your
-fragment shader. However, you can pass variables from your vertex shader to your
-fragment shader! Different values between two vertices will be linearly
-interpolated.</p>
-<pre><code class="language-glsl">#version 330 core
-
-// coming from an output of the vertex shader!
-in vec3 v_Color;
-
-// the final colour of the pixel!
-out vec4 o_Color;
-
-void main() {
-    o_Color = vec4(v_Color, 1.0);
-}
-</code></pre>
-<h4 id="exercise-compiling-a-fragment-shader"><a class="header" href="#exercise-compiling-a-fragment-shader">Exercise: compiling a fragment shader</a></h4>
-<p>Fragment shaders are compiled the exact same way as vertex shaders (don't forget
-to specify <code>GL_FRAGMENT_SHADER</code> when creating it though).</p>
-<blockquote>
-<p>Because of how similar it is to compile vertex and fragment shaders, you could
-maybe write a helper function to do it for you...</p>
-</blockquote>
-<h2 id="a-shader-program"><a class="header" href="#a-shader-program">A shader program</a></h2>
-<p>You now have a vertex shader and a fragment shader compiled! It's now time to
-link them together, just like you would link two object files together to get a
-full program.</p>
-<p>The function to do that is conveniently called <code>glLinkProgram</code>. Use it to link a
-shader program for the two shaders you have compiled.</p>
-<blockquote>
-<p>Just like compilation, linkage can fail! You can use <code>glGetProgramiv</code> and
-<code>glGetProgramInfoLog</code> to get information about any error that occurred when
-linking your shaders.</p>
-</blockquote>
-<p>Did it successfully link? Make sure it does (you might have to modify your
-shaders)!</p>
+<h3 id="buffers-checkpoint"><a class="header" href="#buffers-checkpoint">Buffers: checkpoint</a></h3>
+<p>Back to code! Create the following buffers for the vertex array in the next
+section:</p>
+<table><thead><tr><th align="center">X1</th><th align="center">Y1</th><th align="center">X2</th><th align="center">Y2</th><th align="center">X3</th><th align="center">Y3</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td></tr>
+</tbody></table>
+<table><thead><tr><th align="center">R1</th><th align="center">G1</th><th align="center">B1</th><th align="center">R2</th><th align="center">G2</th><th align="center">B2</th><th align="center">R3</th><th align="center">G3</th><th align="center">B3</th></tr></thead><tbody>
+<tr><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td></tr>
+</tbody></table>
+<p>The first one will contain vertex coordinates, and the second will contain
+vertex colours. The data they contain should be an array of <code>float</code>s.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../hello-triangle/clear.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../hello-triangle/shaders.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../hello-triangle/vertex-array.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -305,15 +249,11 @@ shaders)!</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../hello-triangle/clear.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../hello-triangle/shaders.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a rel="next" href="../hello-triangle/vertex-array.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

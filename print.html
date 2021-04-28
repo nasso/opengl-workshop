@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="hello-triangle/shaders.html"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="hello-triangle/shaders.html"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li><li class="chapter-item expanded "><a href="hello-triangle/vertex-array.html"><strong aria-hidden="true">3.3.</strong> Creating a vertex array</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -385,6 +385,72 @@ linking your shaders.</p>
 </blockquote>
 <p>Did it successfully link? Make sure it does (you might have to modify your
 shaders)!</p>
+<h1 id="creating-a-vertex-array"><a class="header" href="#creating-a-vertex-array">Creating a vertex array</a></h1>
+<p>You should now have a pair of shaders that are compiled and linked together to
+form a shader program!</p>
+<p>The next step will be to actually feed data to our program! The graphics
+pipeline starts with the <em>Vertex Shader</em>, so we have to provide it <em>per-vertex
+data</em>. We do so by creating what is called a <em>Vertex Array</em> (makes sense,
+right?).</p>
+<p>Our triangle is made up of three vertices, so we will need three entries in our
+vertex array. In the following table, each line represents a vertex in our
+vertex array:</p>
+<table><thead><tr><th align="center">X position</th><th align="center">Y position</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td></tr>
+<tr><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td></tr>
+<tr><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td></tr>
+</tbody></table>
+<p>A vertex can have any sort of data associated with it, not just its position!
+For instance, we can associate a colour to each vertex:</p>
+<table><thead><tr><th align="center">X position</th><th align="center">Y position</th><th align="center">Red</th><th align="center">Green</th><th align="center">Blue</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td></tr>
+<tr><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td></tr>
+<tr><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td></tr>
+</tbody></table>
+<h2 id="buffers"><a class="header" href="#buffers">Buffers</a></h2>
+<p>In OpenGL, as with many other graphics API, a vertex array doesn't directly hold
+the data associated with each vertex. Instead, a one-dimensional generic data
+structure called a &quot;buffer&quot; is used to store arbitrary data that can then be
+used to construct a vertex array.</p>
+<p>Keeping the example above, we could have a buffer storing 2D vertex positions:</p>
+<table><thead><tr><th align="center">X1</th><th align="center">Y1</th><th align="center">X2</th><th align="center">Y2</th><th align="center">X3</th><th align="center">Y3</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td></tr>
+</tbody></table>
+<p>Because buffers are one-dimensional data structures, vertex coordinates have to
+be stored in an interleaved layout (<code>X1, Y1, X2, Y2, ...XN, YN</code>).</p>
+<p>OpenGL provides a couple functions to manipulate buffers:</p>
+<ul>
+<li><code>glGenBuffers</code>: to create buffers</li>
+<li><code>glDeleteBuffers</code>: to destroy buffers</li>
+<li><code>glBufferData</code>: to set the buffer contents</li>
+<li><code>glBindBuffer</code>: to &quot;bind&quot; buffers (more on that in the next section)</li>
+</ul>
+<h3 id="the-opengl-state-machine"><a class="header" href="#the-opengl-state-machine">The OpenGL state machine</a></h3>
+<p>When programming with the OpenGL API, you will encounter many <code>glBind*</code>
+functions. This is because OpenGL was designed around the concept of a &quot;state
+machine&quot; where objects must be bound before being manipulated. In other words,
+<strong>you cannot use <code>glBufferData</code> before having bound your buffer with
+<code>glBindBuffer</code></strong>:</p>
+<pre><code class="language-c">// first, bind the buffer...
+glBindBuffer(GL_ARRAY_BUFFER, my_buffer);
+// now that it is the current GL_ARRAY_BUFFER, you can set its data!
+glBufferData(GL_ARRAY_BUFFER, /* ... */);
+</code></pre>
+<blockquote>
+<p><strong>Pay attention to the arguments of <code>glBufferData</code>!</strong> Look it up... None of
+them corresponds <em>directly</em> to the buffer ID you want to manipulate.</p>
+</blockquote>
+<h3 id="buffers-checkpoint"><a class="header" href="#buffers-checkpoint">Buffers: checkpoint</a></h3>
+<p>Back to code! Create the following buffers for the vertex array in the next
+section:</p>
+<table><thead><tr><th align="center">X1</th><th align="center">Y1</th><th align="center">X2</th><th align="center">Y2</th><th align="center">X3</th><th align="center">Y3</th></tr></thead><tbody>
+<tr><td align="center"><code>0.0</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>0.5</code></td><td align="center"><code>-0.5</code></td></tr>
+</tbody></table>
+<table><thead><tr><th align="center">R1</th><th align="center">G1</th><th align="center">B1</th><th align="center">R2</th><th align="center">G2</th><th align="center">B2</th><th align="center">R3</th><th align="center">G3</th><th align="center">B3</th></tr></thead><tbody>
+<tr><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>0.0</code></td><td align="center"><code>1.0</code></td></tr>
+</tbody></table>
+<p>The first one will contain vertex coordinates, and the second will contain
+vertex colours. The data they contain should be an array of <code>float</code>s.</p>
 
                     </main>
 
