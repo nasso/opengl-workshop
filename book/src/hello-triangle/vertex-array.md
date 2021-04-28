@@ -83,3 +83,5 @@ section:
 
 The first one will contain vertex coordinates, and the second will contain
 vertex colours. The data they contain should be an array of `float`s.
+
+> Don't forget to delete the buffers at the end of your program!
