@@ -1,7 +1,7 @@
 # Your own shader program
 
-It's time! Time for what you ask? Well, time to write your very own pair of GLSL
-shaders of course!
+Finally, the time has come! The time for what you ask? Well, to write your very
+own pair of GLSL shaders of course!
 
 You might be wondering what I'm talking about, so let's reiterate, shall we?
 
