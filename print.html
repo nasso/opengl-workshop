@@ -299,6 +299,8 @@ void main() {
 </code></pre>
 <p>Here are a couple things to note about this example shader:</p>
 <ul>
+<li>It written in GLSL 3.30 and uses the <code>core</code> API profile (the profile we're
+using).</li>
 <li>It has a single input: <code>a_Position</code>, a 2D vector. The <code>layout(location = 0)</code>
 part just means &quot;this is input #0&quot;.</li>
 <li>It constructs a 4D vector from <code>a_Position</code> and stores it into <code>gl_Position</code>.
