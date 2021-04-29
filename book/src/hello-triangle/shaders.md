@@ -124,8 +124,8 @@ void main() {
 Fragment shaders are compiled the exact same way as vertex shaders (don't forget
 to specify `GL_FRAGMENT_SHADER` when creating it though).
 
-> Because of how similar it is to compile vertex and fragment shaders, you could
-> maybe write a helper function to do it for you...
+> Because of how similar it is to compile vertex and fragment shaders, maybe you
+> could write a helper function to do it for you...
 
 ## A shader program
 
