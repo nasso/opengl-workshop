@@ -39,6 +39,8 @@ void main() {
 
 Here are a couple things to note about this example shader:
 
+- It written in GLSL 3.30 and uses the `core` API profile (the profile we're
+  using).
 - It has a single input: `a_Position`, a 2D vector. The `layout(location = 0)`
   part just means "this is input #0".
 - It constructs a 4D vector from `a_Position` and stores it into `gl_Position`.
