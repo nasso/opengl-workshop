@@ -281,8 +281,9 @@ shader program for the two shaders you have compiled.</p>
 <code>glGetProgramInfoLog</code> to get information about any error that occurred when
 linking your shaders.</p>
 </blockquote>
-<p>Did it successfully link? Make sure it does (you might have to modify your
-shaders)!</p>
+<p>Did it successfully link? In your vertex shader, add an input similar to
+<code>a_Position</code> called <code>a_Color</code>, and pass its value to the fragment shader using
+an <code>out</code> variable (they must share the same name in the two shaders).</p>
 
                     </main>
 

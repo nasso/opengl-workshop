@@ -385,8 +385,9 @@ shader program for the two shaders you have compiled.</p>
 <code>glGetProgramInfoLog</code> to get information about any error that occurred when
 linking your shaders.</p>
 </blockquote>
-<p>Did it successfully link? Make sure it does (you might have to modify your
-shaders)!</p>
+<p>Did it successfully link? In your vertex shader, add an input similar to
+<code>a_Position</code> called <code>a_Color</code>, and pass its value to the fragment shader using
+an <code>out</code> variable (they must share the same name in the two shaders).</p>
 <h1 id="creating-a-vertex-array"><a class="header" href="#creating-a-vertex-array">Creating a vertex array</a></h1>
 <p>You should now have a pair of shaders that are compiled and linked together to
 form a shader program!</p>
@@ -456,6 +457,57 @@ vertex colours. The data they contain should be an array of <code>float</code>s.
 <blockquote>
 <p>Don't forget to delete the buffers at the end of your program!</p>
 </blockquote>
+<h2 id="constructing-the-vertex-array"><a class="header" href="#constructing-the-vertex-array">Constructing the vertex array</a></h2>
+<p>You should now have two buffers created, one containing 2D coordinates and the
+other containing colours. The last step of the process is to actually build a
+vertex array from that data! You can generate an empty vertex array with
+<code>glGenVertexArrays</code>.</p>
+<p>Remember the shaders you wrote? In your vertex shader, input variables denoted
+with the <code>in</code> keyword correspond to <em>vertex attributes</em>. Each attribute in a
+shader has a unique location that can be specified with
+<code>layout(location = ...)</code>. When created with <code>glGenVertexArrays</code>, vertex arrays
+don't have any attributes: you must enable each location with
+<code>glEnableVertexAttribArray</code>.</p>
+<blockquote>
+<p>Don't forget to bind the vertex array with <code>glBindVertexArray</code> before
+manipulating it!</p>
+</blockquote>
+<p>Now that you have enabled each vertex attribute location, the last step is to
+specify where the data is, and the answer is... in the buffers of course!</p>
+<p>However, the buffers we created don't hold any information regarding the format
+in which our data is stored: it's just an array of raw bytes. The vertex shader
+expects more sophisticated data types, such as single-precision floating-point
+vectors for example.</p>
+<p>Thankfully, <code>glVertexAttribPointer</code> lets us specify all of that with a single
+function call (minus the call to <code>glBindBuffer</code>)! Its <code>index</code> parameter
+corresponds to the attribute location you want to assign data to.</p>
+<p>In the end, the code to build the vertex array should look like this:</p>
+<pre><code class="language-c">// create the coordinates buffer:
+glGenBuffers(...);
+glBindBuffer(...);
+glBufferData(...);
+
+// same for the buffer storing vertex colours:
+/* ... */
+
+// create the vertex array:
+glGenVertexArrays(...);
+glBindVertexArray(...);
+
+// bind one of the buffer to the vertex attribute it corresponds to:
+glEnableVertexAttribArray(...);
+glBindBuffer(...);
+glVertexAttribPointer(...);
+
+// then do the same for the other attribute!
+/* ... */
+</code></pre>
+<blockquote>
+<p><code>glGenBuffers</code> can be used to create several buffers at the same time!</p>
+</blockquote>
+<p>And that's all you need to render a triangle! Well, almost... In the next
+chapter, we will put together everything we've done so far to finally get
+something rendered on the screen!</p>
 
                     </main>
 
