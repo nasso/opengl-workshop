@@ -1,3 +1,5 @@
+include(CheckLibraryExists)
+
 # Source files - ADD YOUR FILES HERE
 set(main_SOURCES
     main.c

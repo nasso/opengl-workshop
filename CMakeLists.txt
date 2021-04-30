@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.11)
 
 project(workshop_opengl)
-include(CheckLibraryExists)
 
 add_subdirectory(framework)
 add_subdirectory(src)
