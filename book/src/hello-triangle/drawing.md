@@ -14,7 +14,7 @@ you'll only need to use three functions:
 - [`glDrawArrays`], to draw the vertices!
 
 > Up until now, everything went in the `init` callback function, because the
-> program and vertex array only needs to be created once. However, the triangle
+> program and vertex array only need to be created once. However, the triangle
 > should be redrawn each frame, reusing the shader program and vertex array
 > every time, so you will probably want to do that in the `render` callback
 > function.
