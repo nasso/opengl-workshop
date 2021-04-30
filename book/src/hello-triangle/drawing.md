@@ -23,6 +23,9 @@ If you did everything right, you should now finally see the triangle show up!
 
 ![Final result](./res/win_triangle.png) _Hello, Triangle!_
 
-[`gluseprogram`]: http://docs.gl/gl3/glUseProgram
-[`glbindvertexarray`]: http://docs.gl/gl3/glBindVertexArray
-[`gldrawarrays`]: http://docs.gl/gl3/glDrawArrays
+[`gluseprogram`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glUseProgram.xhtml
+[`glbindvertexarray`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindVertexArray.xhtml
+[`gldrawarrays`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDrawArrays.xhtml

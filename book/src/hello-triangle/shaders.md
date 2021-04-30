@@ -144,11 +144,19 @@ Did it successfully link? In your vertex shader, add an input similar to
 `a_Position` called `a_Color`, and pass its value to the fragment shader using
 an `out` variable (they must share the same name in the two shaders).
 
-[`glcreateshader`]: http://docs.gl/gl3/glCreateShader
-[`glshadersource`]: http://docs.gl/gl3/glShaderSource
-[`glcompileshader`]: http://docs.gl/gl3/glCompileShader
-[`glgetshaderiv`]: http://docs.gl/gl3/glGetShader
-[`glgetshaderinfolog`]: http://docs.gl/gl3/glGetShaderInfoLog
-[`gllinkprogram`]: http://docs.gl/gl3/glLinkProgram
-[`glgetprogramiv`]: http://docs.gl/gl3/glGetProgram
-[`glgetprograminfolog`]: http://docs.gl/gl3/glGetProgramInfoLog
+[`glcreateshader`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glCreateShader.xhtml
+[`glshadersource`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glShaderSource.xhtml
+[`glcompileshader`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glCompileShader.xhtml
+[`glgetshaderiv`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetShader.xhtml
+[`glgetshaderinfolog`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetShaderInfoLog.xhtml
+[`gllinkprogram`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glLinkProgram.xhtml
+[`glgetprogramiv`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetProgram.xhtml
+[`glgetprograminfolog`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetProgramInfoLog.xhtml

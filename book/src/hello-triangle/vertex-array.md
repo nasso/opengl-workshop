@@ -145,11 +145,19 @@ And that's all you need to render a triangle! Well, almost... In the next
 chapter, we will put together everything we've done so far to finally get
 something rendered on the screen!
 
-[`glgenbuffers`]: http://docs.gl/gl3/glGenBuffers
-[`gldeletebuffers`]: http://docs.gl/gl3/glDeleteBuffers
-[`glbufferdata`]: http://docs.gl/gl3/glBufferData
-[`glbindbuffer`]: http://docs.gl/gl3/glBindBuffer
-[`glgenvertexarrays`]: http://docs.gl/gl3/glGenVertexArrays
-[`glenablevertexattribarray`]: http://docs.gl/gl3/glEnableVertexAttribArray
-[`glbindvertexarray`]: http://docs.gl/gl3/glBindVertexArray
-[`glvertexattribpointer`]: http://docs.gl/gl3/glVertexAttribPointer
+[`glgenbuffers`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGenBuffers.xhtml
+[`gldeletebuffers`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDeleteBuffers.xhtml
+[`glbufferdata`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBufferData.xhtml
+[`glbindbuffer`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindBuffer.xhtml
+[`glgenvertexarrays`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGenVertexArrays.xhtml
+[`glenablevertexattribarray`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glEnableVertexAttribArray.xhtml
+[`glbindvertexarray`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindVertexArray.xhtml
+[`glvertexattribpointer`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribPointer.xhtml

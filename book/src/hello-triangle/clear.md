@@ -16,5 +16,7 @@ clear the screen every time before anything gets drawn.
 
 [opengl-refpages]: https://www.khronos.org/registry/OpenGL-Refpages/gl4/
 [docs.gl]: http://docs.gl
-[`glclear`]: http://docs.gl/gl3/glClear
-[`glclearcolor`]: http://docs.gl/gl3/glClearColor
+[`glclear`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glClear.xhtml
+[`glclearcolor`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glClearColor.xhtml
