@@ -198,24 +198,24 @@ used to construct a vertex array.</p>
 be stored in an interleaved layout (<code>X1, Y1, X2, Y2, ...XN, YN</code>).</p>
 <p>OpenGL provides a couple functions to manipulate buffers:</p>
 <ul>
-<li><code>glGenBuffers</code>: to create buffers</li>
-<li><code>glDeleteBuffers</code>: to destroy buffers</li>
-<li><code>glBufferData</code>: to set the buffer contents</li>
-<li><code>glBindBuffer</code>: to &quot;bind&quot; buffers (more on that in the next section)</li>
+<li><a href="http://docs.gl/gl3/glGenBuffers"><code>glGenBuffers</code></a>: to create buffers</li>
+<li><a href="http://docs.gl/gl3/glDeleteBuffers"><code>glDeleteBuffers</code></a>: to destroy buffers</li>
+<li><a href="http://docs.gl/gl3/glBufferData"><code>glBufferData</code></a>: to set the buffer contents</li>
+<li><a href="http://docs.gl/gl3/glBindBuffer"><code>glBindBuffer</code></a>: to &quot;bind&quot; buffers (more on that in the next section)</li>
 </ul>
 <h3 id="the-opengl-state-machine"><a class="header" href="#the-opengl-state-machine">The OpenGL state machine</a></h3>
 <p>When programming with the OpenGL API, you will encounter many <code>glBind*</code>
 functions. This is because OpenGL was designed around the concept of a &quot;state
 machine&quot; where objects must be bound before being manipulated. In other words,
-<strong>you cannot use <code>glBufferData</code> before having bound your buffer with
-<code>glBindBuffer</code></strong>:</p>
+<strong>you cannot use <a href="http://docs.gl/gl3/glBufferData"><code>glBufferData</code></a> before having bound your buffer with
+<a href="http://docs.gl/gl3/glBindBuffer"><code>glBindBuffer</code></a></strong>:</p>
 <pre><code class="language-c">// first, bind the buffer...
 glBindBuffer(GL_ARRAY_BUFFER, my_buffer);
 // now that it is the current GL_ARRAY_BUFFER, you can set its data!
 glBufferData(GL_ARRAY_BUFFER, /* ... */);
 </code></pre>
 <blockquote>
-<p><strong>Pay attention to the arguments of <code>glBufferData</code>!</strong> Look it up... None of
+<p><strong>Pay attention to the arguments of <a href="http://docs.gl/gl3/glBufferData"><code>glBufferData</code></a>!</strong> Look it up... None of
 them corresponds <em>directly</em> to the buffer ID you want to manipulate.</p>
 </blockquote>
 <h3 id="buffers-checkpoint"><a class="header" href="#buffers-checkpoint">Buffers: checkpoint</a></h3>
@@ -236,15 +236,15 @@ vertex colours. The data they contain should be an array of <code>float</code>s.
 <p>You should now have two buffers created, one containing 2D coordinates and the
 other containing colours. The last step of the process is to actually build a
 vertex array from that data! You can generate an empty vertex array with
-<code>glGenVertexArrays</code>.</p>
+<a href="http://docs.gl/gl3/glGenVertexArrays"><code>glGenVertexArrays</code></a>.</p>
 <p>Remember the shaders you wrote? In your vertex shader, input variables denoted
 with the <code>in</code> keyword correspond to <em>vertex attributes</em>. Each attribute in a
 shader has a unique location that can be specified with
-<code>layout(location = ...)</code>. When created with <code>glGenVertexArrays</code>, vertex arrays
+<code>layout(location = ...)</code>. When created with <a href="http://docs.gl/gl3/glGenVertexArrays"><code>glGenVertexArrays</code></a>, vertex arrays
 don't have any attributes: you must enable each location with
-<code>glEnableVertexAttribArray</code>.</p>
+<a href="http://docs.gl/gl3/glEnableVertexAttribArray"><code>glEnableVertexAttribArray</code></a>.</p>
 <blockquote>
-<p>Don't forget to bind the vertex array with <code>glBindVertexArray</code> before
+<p>Don't forget to bind the vertex array with <a href="http://docs.gl/gl3/glBindVertexArray"><code>glBindVertexArray</code></a> before
 manipulating it!</p>
 </blockquote>
 <p>Now that you have enabled each vertex attribute location, the last step is to
@@ -253,8 +253,8 @@ specify where the data is, and the answer is... in the buffers of course!</p>
 in which our data is stored: it's just an array of raw bytes. The vertex shader
 expects more sophisticated data types, such as single-precision floating-point
 vectors for example.</p>
-<p>Thankfully, <code>glVertexAttribPointer</code> lets us specify all of that with a single
-function call (minus the call to <code>glBindBuffer</code>)! Its <code>index</code> parameter
+<p>Thankfully, <a href="http://docs.gl/gl3/glVertexAttribPointer"><code>glVertexAttribPointer</code></a> lets us specify all of that with a single
+function call (minus the call to <a href="http://docs.gl/gl3/glBindBuffer"><code>glBindBuffer</code></a>)! Its <code>index</code> parameter
 corresponds to the attribute location you want to assign data to.</p>
 <p>In the end, the code to build the vertex array should look like this:</p>
 <pre><code class="language-c">// create the coordinates buffer:
@@ -278,7 +278,7 @@ glVertexAttribPointer(...);
 /* ... */
 </code></pre>
 <blockquote>
-<p><code>glGenBuffers</code> can be used to create several buffers at the same time!</p>
+<p><a href="http://docs.gl/gl3/glGenBuffers"><code>glGenBuffers</code></a> can be used to create several buffers at the same time!</p>
 </blockquote>
 <p>And that's all you need to render a triangle! Well, almost... In the next
 chapter, we will put together everything we've done so far to finally get
