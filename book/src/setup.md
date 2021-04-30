@@ -11,6 +11,7 @@ Clone it somewhere on your computer to get started:
 
 ```sh
 git clone https://github.com/nasso/opengl-workshop.git
+cd opengl-workshop
 ```
 
 > You should have `cmake` installed (at least version 3.11).
