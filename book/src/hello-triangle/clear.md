@@ -3,8 +3,8 @@
 Right now, your window probably doesn't show anything exciting yet. Let's change
 that!
 
-Use `glClear` and `glClearColor` to clear the framebuffer of your window using
-the colour of your choice!
+Use [`glClear`] and [`glClearColor`] to clear the framebuffer of your window
+using the colour of your choice!
 
 ![A cleared window](./res/win_clear.png) _I went with some dark shade of grey._
 
@@ -15,3 +15,5 @@ the colour of your choice!
 
 [opengl-refpages]: https://www.khronos.org/registry/OpenGL-Refpages/gl4/
 [docs.gl]: http://docs.gl
+[`glclear`]: http://docs.gl/gl3/glClear
+[`glclearcolor`]: http://docs.gl/gl3/glClearColor

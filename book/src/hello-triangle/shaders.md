@@ -64,11 +64,11 @@ to figure out the final 2D position! Don't worry, your GPU _loves_ doing math.
 
 #### Exercise: compiling a vertex shader
 
-To create a shader, you can use `glCreateShader`. Once created, you can load the
-GLSL source code with `glShaderSource` and compile it with `glCompileShader`. To
-make it easier for you to write your shaders in separate files (typically `*.vs`
-for vertex shaders and `*.fs` for fragment shaders), I've written a helper
-function to read a file in a heap-allocated string:
+To create a shader, you can use [`glCreateShader`]. Once created, you can load
+the GLSL source code with [`glShaderSource`] and compile it with
+[`glCompileShader`]. To make it easier for you to write your shaders in separate
+files (typically `*.vs` for vertex shaders and `*.fs` for fragment shaders),
+I've written a helper function to read a file in a heap-allocated string:
 
 ```c
 char* source = read_file("./res/my_shader.vs");
@@ -86,7 +86,7 @@ Just don't forget to `#include "utils.h"` at the top of your C source file.
 Try creating and compiling a vertex shader (for instance, the above example)
 using those functions.
 
-> You can use `glGetShaderiv` and `glGetShaderInfoLog` to see if your shader
+> You can use [`glGetShaderiv`] and [`glGetShaderInfoLog`] to see if your shader
 > successfully compiled! Try inserting a syntax error and see if you can get a
 > meaningful error message from it.
 
@@ -133,13 +133,22 @@ You now have a vertex shader and a fragment shader compiled! It's now time to
 link them together, just like you would link two object files together to get a
 full program.
 
-The function to do that is conveniently called `glLinkProgram`. Use it to link a
-shader program for the two shaders you have compiled.
+The function to do that is conveniently called [`glLinkProgram`]. Use it to link
+a shader program for the two shaders you have compiled.
 
-> Just like compilation, linkage can fail! You can use `glGetProgramiv` and
-> `glGetProgramInfoLog` to get information about any error that occurred when
+> Just like compilation, linkage can fail! You can use [`glGetProgramiv`] and
+> [`glGetProgramInfoLog`] to get information about any error that occurred when
 > linking your shaders.
 
 Did it successfully link? In your vertex shader, add an input similar to
 `a_Position` called `a_Color`, and pass its value to the fragment shader using
 an `out` variable (they must share the same name in the two shaders).
+
+[`glcreateshader`]: http://docs.gl/gl3/glCreateShader
+[`glshadersource`]: http://docs.gl/gl3/glShaderSource
+[`glcompileshader`]: http://docs.gl/gl3/glCompileShader
+[`glgetshaderiv`]: http://docs.gl/gl3/glGetShader
+[`glgetshaderinfolog`]: http://docs.gl/gl3/glGetShaderInfoLog
+[`gllinkprogram`]: http://docs.gl/gl3/glLinkProgram
+[`glgetprogramiv`]: http://docs.gl/gl3/glGetProgram
+[`glgetprograminfolog`]: http://docs.gl/gl3/glGetProgramInfoLog

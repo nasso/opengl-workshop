@@ -9,9 +9,9 @@ The only thing left to do is to draw the three vertices of the triangle using
 the program and vertex array we prepared in the previous chapters. To do this,
 you'll only need to use three functions:
 
-- `glUseProgram`, to specify the shader program
-- `glBindVertexArray`, to specify the vertex array
-- `glDrawArrays`, to draw the vertices!
+- [`glUseProgram`], to specify the shader program
+- [`glBindVertexArray`], to specify the vertex array
+- [`glDrawArrays`], to draw the vertices!
 
 > Up until now, everything went in the `init` callback function, because the
 > program and vertex array only needs to be created once. However, the triangle
@@ -22,3 +22,7 @@ you'll only need to use three functions:
 If you did everything right, you should now finally see the triangle show up!
 
 ![Final result](./res/win_triangle.png) _Hello, Triangle!_
+
+[`gluseprogram`]: http://docs.gl/gl3/glUseProgram
+[`glbindvertexarray`]: http://docs.gl/gl3/glBindVertexArray
+[`gldrawarrays`]: http://docs.gl/gl3/glDrawArrays

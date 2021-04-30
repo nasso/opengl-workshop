@@ -45,18 +45,18 @@ be stored in an interleaved layout (`X1, Y1, X2, Y2, ...XN, YN`).
 
 OpenGL provides a couple functions to manipulate buffers:
 
-- `glGenBuffers`: to create buffers
-- `glDeleteBuffers`: to destroy buffers
-- `glBufferData`: to set the buffer contents
-- `glBindBuffer`: to "bind" buffers (more on that in the next section)
+- [`glGenBuffers`]: to create buffers
+- [`glDeleteBuffers`]: to destroy buffers
+- [`glBufferData`]: to set the buffer contents
+- [`glBindBuffer`]: to "bind" buffers (more on that in the next section)
 
 ### The OpenGL state machine
 
 When programming with the OpenGL API, you will encounter many `glBind*`
 functions. This is because OpenGL was designed around the concept of a "state
 machine" where objects must be bound before being manipulated. In other words,
-**you cannot use `glBufferData` before having bound your buffer with
-`glBindBuffer`**:
+**you cannot use [`glBufferData`] before having bound your buffer with
+[`glBindBuffer`]**:
 
 ```c
 // first, bind the buffer...
@@ -65,7 +65,7 @@ glBindBuffer(GL_ARRAY_BUFFER, my_buffer);
 glBufferData(GL_ARRAY_BUFFER, /* ... */);
 ```
 
-> **Pay attention to the arguments of `glBufferData`!** Look it up... None of
+> **Pay attention to the arguments of [`glBufferData`]!** Look it up... None of
 > them corresponds _directly_ to the buffer ID you want to manipulate.
 
 ### Buffers: checkpoint
@@ -91,16 +91,16 @@ vertex colours. The data they contain should be an array of `float`s.
 You should now have two buffers created, one containing 2D coordinates and the
 other containing colours. The last step of the process is to actually build a
 vertex array from that data! You can generate an empty vertex array with
-`glGenVertexArrays`.
+[`glGenVertexArrays`].
 
 Remember the shaders you wrote? In your vertex shader, input variables denoted
 with the `in` keyword correspond to _vertex attributes_. Each attribute in a
 shader has a unique location that can be specified with
-`layout(location = ...)`. When created with `glGenVertexArrays`, vertex arrays
+`layout(location = ...)`. When created with [`glGenVertexArrays`], vertex arrays
 don't have any attributes: you must enable each location with
-`glEnableVertexAttribArray`.
+[`glEnableVertexAttribArray`].
 
-> Don't forget to bind the vertex array with `glBindVertexArray` before
+> Don't forget to bind the vertex array with [`glBindVertexArray`] before
 > manipulating it!
 
 Now that you have enabled each vertex attribute location, the last step is to
@@ -111,8 +111,8 @@ in which our data is stored: it's just an array of raw bytes. The vertex shader
 expects more sophisticated data types, such as single-precision floating-point
 vectors for example.
 
-Thankfully, `glVertexAttribPointer` lets us specify all of that with a single
-function call (minus the call to `glBindBuffer`)! Its `index` parameter
+Thankfully, [`glVertexAttribPointer`] lets us specify all of that with a single
+function call (minus the call to [`glBindBuffer`])! Its `index` parameter
 corresponds to the attribute location you want to assign data to.
 
 In the end, the code to build the vertex array should look like this:
@@ -139,8 +139,17 @@ glVertexAttribPointer(...);
 /* ... */
 ```
 
-> `glGenBuffers` can be used to create several buffers at the same time!
+> [`glGenBuffers`] can be used to create several buffers at the same time!
 
 And that's all you need to render a triangle! Well, almost... In the next
 chapter, we will put together everything we've done so far to finally get
 something rendered on the screen!
+
+[`glgenbuffers`]: http://docs.gl/gl3/glGenBuffers
+[`gldeletebuffers`]: http://docs.gl/gl3/glDeleteBuffers
+[`glbufferdata`]: http://docs.gl/gl3/glBufferData
+[`glbindbuffer`]: http://docs.gl/gl3/glBindBuffer
+[`glgenvertexarrays`]: http://docs.gl/gl3/glGenVertexArrays
+[`glenablevertexattribarray`]: http://docs.gl/gl3/glEnableVertexAttribArray
+[`glbindvertexarray`]: http://docs.gl/gl3/glBindVertexArray
+[`glvertexattribpointer`]: http://docs.gl/gl3/glVertexAttribPointer
