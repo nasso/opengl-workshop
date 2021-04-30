@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Clearing the screen - OpenGL Workshop</title>
+        <title>Introduction - OpenGL Workshop</title>
         
         
 
@@ -19,29 +19,29 @@
 
         
         
-        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="shortcut icon" href="favicon.png">
         
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
         
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="stylesheet" href="css/print.css" media="print">
         
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
         
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
-        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="custom.css">
         
 
         
@@ -49,7 +49,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "../";
+            var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
         </script>
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-triangle/clear.html" class="active"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="../hello-triangle/shaders.html"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li><li class="chapter-item expanded "><a href="../hello-triangle/vertex-array.html"><strong aria-hidden="true">3.3.</strong> Creating a vertex array</a></li><li class="chapter-item expanded "><a href="../hello-triangle/drawing.html"><strong aria-hidden="true">3.4.</strong> Drawing the triangle</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Hello, Textured Cube!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Basic lightning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Normal mapping</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Shadow mapping</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Physically based rendering techniques</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Ray-tracing</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> GTA VI tutorial</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="hello-triangle/shaders.html"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li><li class="chapter-item expanded "><a href="hello-triangle/vertex-array.html"><strong aria-hidden="true">3.3.</strong> Creating a vertex array</a></li><li class="chapter-item expanded "><a href="hello-triangle/drawing.html"><strong aria-hidden="true">3.4.</strong> Drawing the triangle</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Hello, Textured Cube!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Basic lightning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Normal mapping</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Shadow mapping</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Physically based rendering techniques</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Ray-tracing</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> GTA VI tutorial</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -131,7 +131,7 @@
 
                     <div class="right-buttons">
                         
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -163,31 +163,67 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="clearing-the-screen"><a class="header" href="#clearing-the-screen">Clearing the screen</a></h1>
-<p>Right now, your window probably doesn't show anything exciting yet. Let's change
-that!</p>
-<p>Use <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glClear.xhtml"><code>glClear</code></a> and <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glClearColor.xhtml"><code>glClearColor</code></a> to clear the framebuffer of your window
-using the colour of your choice! Do it in the <code>render</code> function callback to
-clear the screen every time before anything gets drawn.</p>
-<p><img src="./res/win_clear.png" alt="A cleared window" /> <em>I went with some dark shade of grey.</em></p>
-<h2 id="links"><a class="header" href="#links">Links</a></h2>
-<ul>
-<li><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/">OpenGL 4 Reference Pages</a> - the official documentation</li>
-<li><a href="http://docs.gl">docs.gl</a> - a nicer documentation, though unofficial</li>
-</ul>
+                        <!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
+<img class="light-only" src="res/OpenGL_170px_June16.png">
+<img class="dark-only" src="res/OpenGL_White_170px_June16.png">
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Welcome to my OpenGL workshop! This workshop will walk you through the very
+basics of the modern OpenGL API (&gt;= 3.3). By the end of it, you should have a
+rough understanding of how the API is structured and how it can be used to
+render simple hardware accelerated shapes.</p>
+<h2 id="whats-opengl"><a class="header" href="#whats-opengl">What's OpenGL?</a></h2>
+<p>OpenGL is a graphics API that gives you the power to use your video card for
+graphical rendering. Without it, you would have to manually compute the colour
+for every single pixel you would like to draw using the CPU. That's horrendously
+slow, because you have to iterate through every single pixel one by one in
+sequence!</p>
+<p>Instead, many computers have a Graphical Processing Unit (GPU for short). It is
+much more efficient because it's able to render different parts of your scene in
+parallel! To be able to communicate with it in your programs, many different
+APIs exist, each with a different set of capabilities and platform support.</p>
+<p>The following table (that I just made up myself) summarises platform support for
+the most common graphics APIs out there:</p>
+<table><thead><tr><th align="right">Platform</th><th align="center">OpenGL</th><th align="center">Direct3D (DirectX)</th><th align="center">Vulkan</th><th align="center">Metal</th></tr></thead><tbody>
+<tr><td align="right">Windows</td><td align="center">++</td><td align="center">+++</td><td align="center">++</td><td align="center">-</td></tr>
+<tr><td align="right">Linux</td><td align="center">++</td><td align="center">-</td><td align="center">+++</td><td align="center">-</td></tr>
+<tr><td align="right">Android</td><td align="center">++</td><td align="center">-</td><td align="center">+++</td><td align="center">-</td></tr>
+<tr><td align="right">Mac</td><td align="center">+</td><td align="center">-</td><td align="center">+*</td><td align="center">+++</td></tr>
+<tr><td align="right">iOS</td><td align="center">+</td><td align="center">-</td><td align="center">+*</td><td align="center">+++</td></tr>
+<tr><td align="right">Switch</td><td align="center">+</td><td align="center">-</td><td align="center">++</td><td align="center">-</td></tr>
+<tr><td align="right">Xbox</td><td align="center">-</td><td align="center">+++</td><td align="center">-</td><td align="center">-</td></tr>
+</tbody></table>
+<p>*: non-official support through third-party software</p>
+<blockquote>
+<p>The name of the Xbox comes from DirectX (it's a &quot;direct-X Box&quot;). The
+PlayStation by Sony has its own proprietary API, and <a href="https://www.reddit.com/r/gamedev/comments/7jcugl/anyone_know_if_the_switch_has_its_own_graphics_api/">the Nintendo Switch also
+supports NVN</a>, an API developed by NVIDIA.</p>
+</blockquote>
+<h2 id="what-are-we-making"><a class="header" href="#what-are-we-making">What are we making?</a></h2>
+<p>Most programmers begin to learn a new language or technology by writing a simple
+&quot;Hello, World!&quot; program. In the world of low-level graphics programming, the
+equivalent is the well known &quot;RGB triangle&quot;:</p>
+<p><img src="./hello-triangle/res/win_triangle.png" alt="The RGB triangle" /> <em>Hello, Triangle!</em></p>
+<p>Being a low level API, OpenGL requires us to follow quite a bunch of steps in
+order to reach our goal:</p>
+<ol>
+<li>Create a shader program</li>
+<li>Create a buffer containing vertex coordinates</li>
+<li>Create a buffer containing vertex colours</li>
+<li>Define a vertex array using the two buffers</li>
+<li>Clear the screen</li>
+<li>Draw 3 vertices using our shader program and vertex array</li>
+</ol>
+<p>Don't worry, we'll go through each of those steps one by one!</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../hello-triangle/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
 
                         
-                            <a rel="next" href="../hello-triangle/shaders.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="setup.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -199,13 +235,9 @@ clear the screen every time before anything gets drawn.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../hello-triangle/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
 
                 
-                    <a rel="next" href="../hello-triangle/shaders.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="setup.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -228,14 +260,14 @@ clear the screen every time before anything gets drawn.</p>
         
 
         
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
