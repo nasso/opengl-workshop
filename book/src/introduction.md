@@ -6,9 +6,10 @@
 
 # Introduction
 
-Welcome to my OpenGL workshop! This workshop will walk you through the
-realisation of a minimal C program capable of displaying a (transparent) sprite
-using modern OpenGL (>= 3.3).
+Welcome to my OpenGL workshop! This workshop will walk you through the very
+basics of the modern OpenGL API (>= 3.3). By the end of it, you should have a
+rough understanding of how the API is structured and how it can be used to
+render simple hardware accelerated shapes.
 
 ## What's OpenGL?
 
@@ -44,20 +45,21 @@ the most common graphics APIs out there:
 
 ## What are we making?
 
-To give you a rough understanding of how the OpenGL API is structured, we're
-going to render a basic 2D sprite on the screen. It may sound easy at first if
-you're used to higher level APIs such as the SFML (right?), but being a low
-level API, OpenGL requires us to follow quite a bunch of steps in order to reach
-our goal:
+Most programmers begin to learn a new language or technology by writing a simple
+"Hello, World!" program. In the world of low-level graphics programming, the
+equivalent is the well known "RGB triangle":
+
+![The RGB triangle](./hello-triangle/res/win_triangle.png) _Hello, Triangle!_
+
+Being a low level API, OpenGL requires us to follow quite a bunch of steps in
+order to reach our goal:
 
 1. Create a shader program
-2. Load the sprite's texture
-3. Create a buffer containing vertex coordinates
-4. Create another buffer for texture coordinates
-5. Define an array of vertices using the two buffers
-6. Bind vertex data to variables in our shader
-7. Clear the output framebuffer
-8. Draw all 4 vertices in our vertex array using our shader and texture!
+2. Create a buffer containing vertex coordinates
+3. Create a buffer containing vertex colours
+4. Define a vertex array using the two buffers
+5. Clear the screen
+6. Draw 3 vertices using our shader program and vertex array
 
 Don't worry, we'll go through each of those steps one by one!
 
