@@ -23,9 +23,16 @@ If you did everything right, you should now finally see the triangle show up!
 
 ![Final result](./res/win_triangle.png) _Hello, Triangle!_
 
+> If you don't see anything: don't worry! Most of us don't get things working
+> right away on our first try. Check for errors using [`glGetError`], go back a
+> few chapters, and do not hesitate to ask for help (you're probably not the
+> only one)!
+
 [`gluseprogram`]:
   https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glUseProgram.xhtml
 [`glbindvertexarray`]:
   https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindVertexArray.xhtml
 [`gldrawarrays`]:
   https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDrawArrays.xhtml
+[`glgeterror`]:
+  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetError.xhtml
