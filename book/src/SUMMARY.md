@@ -1,6 +1,6 @@
-<!-- markdownlint-disable MD042 -->
-
 # Summary
+
+<!-- markdownlint-disable MD042 -->
 
 - [Introduction](./introduction.md)
 - [Setup](./setup.md)
