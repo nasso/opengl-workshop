@@ -170,9 +170,10 @@
 <img class="light-only" src="res/OpenGL_170px_June16.png">
 <img class="dark-only" src="res/OpenGL_White_170px_June16.png">
 <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p>Welcome to my OpenGL workshop! This workshop will walk you through the
-realisation of a minimal C program capable of displaying a (transparent) sprite
-using modern OpenGL (&gt;= 3.3).</p>
+<p>Welcome to my OpenGL workshop! This workshop will walk you through the very
+basics of the modern OpenGL API (&gt;= 3.3). By the end of it, you should have a
+rough understanding of how the API is structured and how it can be used to
+render simple hardware accelerated shapes.</p>
 <h2 id="whats-opengl"><a class="header" href="#whats-opengl">What's OpenGL?</a></h2>
 <p>OpenGL is a graphics API that gives you the power to use your video card for
 graphical rendering. Without it, you would have to manually compute the colour
@@ -201,20 +202,19 @@ PlayStation by Sony has its own proprietary API, and <a href="https://www.reddit
 supports NVN</a>, an API developed by NVIDIA.</p>
 </blockquote>
 <h2 id="what-are-we-making"><a class="header" href="#what-are-we-making">What are we making?</a></h2>
-<p>To give you a rough understanding of how the OpenGL API is structured, we're
-going to render a basic 2D sprite on the screen. It may sound easy at first if
-you're used to higher level APIs such as the SFML (right?), but being a low
-level API, OpenGL requires us to follow quite a bunch of steps in order to reach
-our goal:</p>
+<p>Most programmers begin to learn a new language or technology by writing a simple
+&quot;Hello, World!&quot; program. In the world of low-level graphics programming, the
+equivalent is the well known &quot;RGB triangle&quot;:</p>
+<p><img src="./hello-triangle/res/win_triangle.png" alt="The RGB triangle" /> <em>Hello, Triangle!</em></p>
+<p>Being a low level API, OpenGL requires us to follow quite a bunch of steps in
+order to reach our goal:</p>
 <ol>
 <li>Create a shader program</li>
-<li>Load the sprite's texture</li>
 <li>Create a buffer containing vertex coordinates</li>
-<li>Create another buffer for texture coordinates</li>
-<li>Define an array of vertices using the two buffers</li>
-<li>Bind vertex data to variables in our shader</li>
-<li>Clear the output framebuffer</li>
-<li>Draw all 4 vertices in our vertex array using our shader and texture!</li>
+<li>Create a buffer containing vertex colours</li>
+<li>Define a vertex array using the two buffers</li>
+<li>Clear the screen</li>
+<li>Draw 3 vertices using our shader program and vertex array</li>
 </ol>
 <p>Don't worry, we'll go through each of those steps one by one!</p>
 <h1 id="setup"><a class="header" href="#setup">Setup</a></h1>
@@ -262,10 +262,11 @@ what you should have at the end of this chapter:</p>
 that!</p>
 <p>Use <code>glClear</code> and <code>glClearColor</code> to clear the framebuffer of your window using
 the colour of your choice!</p>
-<p><img src="hello-triangle/./res/win_clear.png" alt="A cleared window" /> <em>I went with some dark shade of grey</em></p>
+<p><img src="hello-triangle/./res/win_clear.png" alt="A cleared window" /> <em>I went with some dark shade of grey.</em></p>
 <h2 id="links"><a class="header" href="#links">Links</a></h2>
 <ul>
-<li><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/">OpenGL 4 Reference Pages</a></li>
+<li><a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/">OpenGL 4 Reference Pages</a> - the official documentation</li>
+<li><a href="http://docs.gl">docs.gl</a> - a nicer documentation, though unofficial</li>
 </ul>
 <h1 id="your-own-shader-program"><a class="header" href="#your-own-shader-program">Your own shader program</a></h1>
 <p>Finally, the time has come! The time for what you ask? Well, to write your very
