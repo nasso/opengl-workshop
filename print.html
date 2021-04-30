@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="hello-triangle/shaders.html"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li><li class="chapter-item expanded "><a href="hello-triangle/vertex-array.html"><strong aria-hidden="true">3.3.</strong> Creating a vertex array</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="hello-triangle/index.html"><strong aria-hidden="true">3.</strong> Hello, Triangle!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-triangle/clear.html"><strong aria-hidden="true">3.1.</strong> Clearing the screen</a></li><li class="chapter-item expanded "><a href="hello-triangle/shaders.html"><strong aria-hidden="true">3.2.</strong> Your own shader program</a></li><li class="chapter-item expanded "><a href="hello-triangle/vertex-array.html"><strong aria-hidden="true">3.3.</strong> Creating a vertex array</a></li><li class="chapter-item expanded "><a href="hello-triangle/drawing.html"><strong aria-hidden="true">3.4.</strong> Drawing the triangle</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -508,6 +508,29 @@ glVertexAttribPointer(...);
 <p>And that's all you need to render a triangle! Well, almost... In the next
 chapter, we will put together everything we've done so far to finally get
 something rendered on the screen!</p>
+<h1 id="drawing-the-triangle"><a class="header" href="#drawing-the-triangle">Drawing the triangle</a></h1>
+<p>You should now have:</p>
+<ul>
+<li>A shader program that compiles and links</li>
+<li>A vertex array providing vertex data for each attribute used by your program</li>
+</ul>
+<p>The only thing left to do is to draw the three vertices of the triangle using
+the program and vertex array we prepared in the previous chapters. To do this,
+you'll only need to use three functions:</p>
+<ul>
+<li><code>glUseProgram</code>, to specify the shader program</li>
+<li><code>glBindVertexArray</code>, to specify the vertex array</li>
+<li><code>glDrawArrays</code>, to draw the vertices!</li>
+</ul>
+<blockquote>
+<p>Up until now, everything went in the <code>init</code> callback function, because the
+program and vertex array only needs to be created once. However, the triangle
+should be redrawn each frame, reusing the shader program and vertex array
+every time, so you will probably want to do that in the <code>render</code> callback
+function.</p>
+</blockquote>
+<p>If you did everything right, you should now finally see the triangle show up!</p>
+<p><img src="hello-triangle/./res/win_triangle.png" alt="Final result" /> <em>Hello, Triangle!</em></p>
 
                     </main>
 
