@@ -216,9 +216,9 @@ keep it simple and just feed it plain 2D coordinates like in the example above.
 But you could also feed it 3D coordinates and matrices, and let it do the math
 to figure out the final 2D position! Don't worry, your GPU <em>loves</em> doing math.</p>
 <h4 id="exercise-compiling-a-vertex-shader"><a class="header" href="#exercise-compiling-a-vertex-shader">Exercise: compiling a vertex shader</a></h4>
-<p>To create a shader, you can use <a href="http://docs.gl/gl3/glCreateShader"><code>glCreateShader</code></a>. Once created, you can load
-the GLSL source code with <a href="http://docs.gl/gl3/glShaderSource"><code>glShaderSource</code></a> and compile it with
-<a href="http://docs.gl/gl3/glCompileShader"><code>glCompileShader</code></a>. To make it easier for you to write your shaders in separate
+<p>To create a shader, you can use <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glCreateShader.xhtml"><code>glCreateShader</code></a>. Once created, you can load
+the GLSL source code with <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glShaderSource.xhtml"><code>glShaderSource</code></a> and compile it with
+<a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glCompileShader.xhtml"><code>glCompileShader</code></a>. To make it easier for you to write your shaders in separate
 files (typically <code>*.vs</code> for vertex shaders and <code>*.fs</code> for fragment shaders),
 I've written a helper function to read a file in a heap-allocated string:</p>
 <pre><code class="language-c">char* source = read_file(&quot;./res/my_shader.vs&quot;);
@@ -234,7 +234,7 @@ free(source);
 <p>Try creating and compiling a vertex shader (for instance, the above example)
 using those functions.</p>
 <blockquote>
-<p>You can use <a href="http://docs.gl/gl3/glGetShader"><code>glGetShaderiv</code></a> and <a href="http://docs.gl/gl3/glGetShaderInfoLog"><code>glGetShaderInfoLog</code></a> to see if your shader
+<p>You can use <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetShader.xhtml"><code>glGetShaderiv</code></a> and <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetShaderInfoLog.xhtml"><code>glGetShaderInfoLog</code></a> to see if your shader
 successfully compiled! Try inserting a syntax error and see if you can get a
 meaningful error message from it.</p>
 </blockquote>
@@ -274,11 +274,11 @@ could write a helper function to do it for you...</p>
 <p>You now have a vertex shader and a fragment shader compiled! It's now time to
 link them together, just like you would link two object files together to get a
 full program.</p>
-<p>The function to do that is conveniently called <a href="http://docs.gl/gl3/glLinkProgram"><code>glLinkProgram</code></a>. Use it to link
+<p>The function to do that is conveniently called <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glLinkProgram.xhtml"><code>glLinkProgram</code></a>. Use it to link
 a shader program for the two shaders you have compiled.</p>
 <blockquote>
-<p>Just like compilation, linkage can fail! You can use <a href="http://docs.gl/gl3/glGetProgram"><code>glGetProgramiv</code></a> and
-<a href="http://docs.gl/gl3/glGetProgramInfoLog"><code>glGetProgramInfoLog</code></a> to get information about any error that occurred when
+<p>Just like compilation, linkage can fail! You can use <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetProgram.xhtml"><code>glGetProgramiv</code></a> and
+<a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetProgramInfoLog.xhtml"><code>glGetProgramInfoLog</code></a> to get information about any error that occurred when
 linking your shaders.</p>
 </blockquote>
 <p>Did it successfully link? In your vertex shader, add an input similar to
