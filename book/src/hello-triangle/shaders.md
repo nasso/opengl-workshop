@@ -127,7 +127,7 @@ to specify `GL_FRAGMENT_SHADER` when creating it though).
 > Because of how similar it is to compile vertex and fragment shaders, maybe you
 > could write a helper function to do it for you...
 
-## A shader program
+## A complete shader program
 
 You now have a vertex shader and a fragment shader compiled! It's now time to
 link them together, just like you would link two object files together to get a
