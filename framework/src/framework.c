@@ -14,21 +14,41 @@ render_cb_t* user_render_callback = NULL;
 update_cb_t* user_update_callback = NULL;
 cleanup_cb_t* user_cleanup_callback = NULL;
 
+/**
+ * @brief Set the callback function to be called on app initialisation.
+ *
+ * No OpenGL API call may be performed outside of the callback function!
+ */
 void workshop_on_init(init_cb_t* fn)
 {
     user_init_callback = fn;
 }
 
+/**
+ * @brief Set the callback function to be called on app update.
+ *
+ * No OpenGL API call may be performed outside of the callback function!
+ */
 void workshop_on_update(update_cb_t* fn)
 {
     user_update_callback = fn;
 }
 
+/**
+ * @brief Set the callback function to be called on app render.
+ *
+ * No OpenGL API call may be performed outside of the callback function!
+ */
 void workshop_on_render(render_cb_t* fn)
 {
     user_render_callback = fn;
 }
 
+/**
+ * @brief Set the callback function to be called on app cleanup.
+ *
+ * No OpenGL API call may be performed outside of the callback function!
+ */
 void workshop_on_cleanup(cleanup_cb_t* fn)
 {
     user_cleanup_callback = fn;
@@ -44,7 +64,19 @@ static void on_window_resize(GLFWwindow* win, int w, int h)
     glViewport(0, 0, w, h);
 }
 
-int workshop_start(const char *title, int width, int height)
+/**
+ * @brief Run the application.
+ *
+ * A new window with the given dimensions and title is created along with an
+ * OpenGL context. No OpenGL function calls may be performed before this
+ * function is called!
+ *
+ * @param title
+ * @param width
+ * @param height
+ * @return int Zero on success, any non-zero value on error.
+ */
+int workshop_start(const char* title, int width, int height)
 {
     // Setup the error callback to be notified of any GLFW error
     glfwSetErrorCallback(on_glfw_error);

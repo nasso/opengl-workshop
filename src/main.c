@@ -1,10 +1,10 @@
 #include "framework.h"
 #include <glad/gl.h>
 
-/* Create everything! */
+/* Create shaders, buffers, vertex arrays, and other resources here */
 static int init()
 {
-    // Return 0 for successful initialisation!
+    // Return 0 on success
     return 0;
 }
 
@@ -18,7 +18,7 @@ static void cleanup()
 {
 }
 
-/* Start everything! */
+/* Start everything! You shouldn't have to modify the main function. */
 int main()
 {
     workshop_on_init(init);
