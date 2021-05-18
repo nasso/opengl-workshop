@@ -14,8 +14,8 @@ vertex array:
 
 | X position | Y position |
 | :--------: | :--------: |
+|   `-0.5`   |   `-0.5`   |
 |   `0.0`    |   `0.5`    |
-|   `-0.5`   |   `0.5`    |
 |   `0.5`    |   `-0.5`   |
 
 A vertex can have any sort of data associated with it, not just its position!
@@ -23,8 +23,8 @@ For instance, we can associate a colour to each vertex:
 
 | X position | Y position |  Red  | Green | Blue  |
 | :--------: | :--------: | :---: | :---: | :---: |
-|   `0.0`    |   `0.5`    | `1.0` | `0.0` | `0.0` |
-|   `-0.5`   |   `0.5`    | `0.0` | `1.0` | `0.0` |
+|   `-0.5`   |   `-0.5`   | `1.0` | `0.0` | `0.0` |
+|   `0.0`    |   `0.5`    | `0.0` | `1.0` | `0.0` |
 |   `0.5`    |   `-0.5`   | `0.0` | `0.0` | `1.0` |
 
 ## Buffers
@@ -73,9 +73,9 @@ glBufferData(GL_ARRAY_BUFFER, /* ... */);
 Back to code! Create the following buffers for the vertex array we will be
 creating in the next section:
 
-|  X1   |  Y1   |   X2   |  Y2   |  X3   |   Y3   |
-| :---: | :---: | :----: | :---: | :---: | :----: |
-| `0.0` | `0.5` | `-0.5` | `0.5` | `0.5` | `-0.5` |
+|   X1   |   Y1   |  X2   |  Y2   |  X3   |   Y3   |
+| :----: | :----: | :---: | :---: | :---: | :----: |
+| `-0.5` | `-0.5` | `0.0` | `0.5` | `0.5` | `-0.5` |
 
 |  R1   |  G1   |  B1   |  R2   |  G2   |  B2   |  R3   |  G3   |  B3   |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
